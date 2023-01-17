@@ -11,6 +11,7 @@ pub enum MatcherType {
     Image,
     Text,
     Video,
+    Model,
     Custom,
 }
 
@@ -28,7 +29,7 @@ macro_rules! matcher_map {
     };
 }
 
-// Order: Application, Image, Video, Audio, Font, Document, Archive, Text.
+// Order: Application, Image, Video, Audio, Model, Font, Document, Archive, Text.
 // The above order should be preserved when adding new types since
 // it may affect match result and/or performances.
 matcher_map!(
@@ -337,6 +338,49 @@ matcher_map!(
         "audio/x-ape",
         "ape",
         matchers::audio::is_ape
+    ),
+    //Model
+    (
+        MatcherType::Model,
+        "model/gltf-binary",
+        "glb",
+        matchers::model::is_glb
+    ),
+    (
+        MatcherType::Model,
+        "model/vnd.pixar.usd",
+        "usd",
+        matchers::model::is_usd
+    ),
+    (
+        MatcherType::Model,
+        "model/fbx",
+        "fbx",
+        matchers::model::is_fbx
+    ),
+    (
+        MatcherType::Model,
+        "model/x-3ds",
+        "3ds",
+        matchers::model::is_3ds
+    ),
+    (
+        MatcherType::Model,
+        "model/sla",
+        "stl",
+        matchers::model::is_stl
+    ),
+    (
+        MatcherType::Model,
+        "model/step",
+        "step",
+        matchers::model::is_step
+    ),
+    (
+        MatcherType::Model,
+        "model/drc",
+        "drc",
+        matchers::model::is_drc
     ),
     // Font
     (

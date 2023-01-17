@@ -362,6 +362,15 @@ impl Infer {
         self.is_type(buf, MatcherType::Video)
     }
 
+    /// Determines whether a buffer is a model type.
+    ///
+    /// # Examples
+    ///
+    /// See [`is_video`](./fn.is_model.html).
+    pub fn is_model(&self, buf: &[u8]) -> bool {
+        self.is_type(buf, MatcherType::Model)
+    }
+
     /// Determines whether a buffer is one of the custom types added.
     ///
     /// # Examples
@@ -604,6 +613,18 @@ pub fn is_image(buf: &[u8]) -> bool {
 /// ```
 pub fn is_video(buf: &[u8]) -> bool {
     INFER.is_video(buf)
+}
+
+/// Determines whether a buffer is a model type.
+///
+/// # Examples
+///
+/// ```rust
+/// use std::fs;
+/// assert!(infer::is_model(&fs::read("testdata/sample.obj").unwrap()));
+/// ```
+pub fn is_model(buf: &[u8]) -> bool {
+    INFER.is_model(buf)
 }
 
 #[cfg(test)]

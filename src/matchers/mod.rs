@@ -5,6 +5,7 @@ pub mod book;
 pub mod doc;
 pub mod font;
 pub mod image;
+pub mod model;
 pub mod odf;
 pub mod text;
 pub mod video;
